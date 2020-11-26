@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
+import Header from './Header'
 import {
   StyleSheet,
   Text,
@@ -60,6 +61,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header title={CHANNEL} />
       <FlatList data={messages} renderItem={renderItem} inverted />
       <StatusBar style='auto' />
       <KeyboardAvoidingView behavior='padding'>
