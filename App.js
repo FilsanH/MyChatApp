@@ -8,6 +8,7 @@ import {
   TextInput,
   KeyboardAvoidingView,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native'
 import { send, subscribe } from './chatServer'
 
@@ -43,6 +44,20 @@ export default function App() {
   const [text, setText] = React.useState('')
   //setTExt called and value of text input is set by it
 
+  const sendMessage = React.useCallback(async () => {
+    // send message to our channel, with sender name.
+    // the `await` keyword means this function execution
+    // waits until the message is sent
+    await send({
+      channel: CHANNEL,
+      sender: NAME,
+      message: text,
+    })
+
+    // clear the input
+    setText('')
+  }, [text])
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList data={messages} renderItem={renderItem} inverted />
@@ -56,6 +71,9 @@ export default function App() {
             underlineColorAndroid='transparent'
             placeholder='Type something nice '
           />
+          <TouchableOpacity onPress={sendMessage}>
+            <Text style={styles.send}>Sendd</Text>
+          </TouchableOpacity>
         </View>
         {/* notice controlled input feedback  */}
       </KeyboardAvoidingView>
@@ -89,5 +107,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     fontSize: 18,
     flex: 1,
+  },
+  send: {
+    alignSelf: 'center',
+    color: 'teal',
+    fontSize: 16,
+    fontWeight: 'bold',
+    padding: 20,
+    margin: 10,
   },
 })
