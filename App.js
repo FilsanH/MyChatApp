@@ -1,6 +1,14 @@
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
-import { StyleSheet, Text, View, FlatList, TextInput } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TextInput,
+  KeyboardAvoidingView,
+  SafeAreaView,
+} from 'react-native'
 import { send, subscribe } from './chatServer'
 
 const NAME = 'Filsan'
@@ -33,12 +41,25 @@ export default function App() {
   //...end new lines
 
   const [text, setText] = React.useState('')
+  //setTExt called and value of text input is set by it
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <FlatList data={messages} renderItem={renderItem} inverted />
       <StatusBar style='auto' />
-    </View>
+      <KeyboardAvoidingView behavior='padding'>
+        <View style={styles.footer}>
+          <TextInput
+            value={text}
+            onChangeText={setText}
+            style={styles.input}
+            underlineColorAndroid='transparent'
+            placeholder='Type something nice '
+          />
+        </View>
+        {/* notice controlled input feedback  */}
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   )
 }
 
@@ -58,5 +79,15 @@ const styles = StyleSheet.create({
   sender: {
     fontWeight: 'bold',
     paddingRight: 10,
+  },
+  footer: {
+    flexDirection: 'row',
+    backgroundColor: '#eee',
+  },
+  input: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    fontSize: 18,
+    flex: 1,
   },
 })
