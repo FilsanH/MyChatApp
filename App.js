@@ -10,18 +10,24 @@ import {
   KeyboardAvoidingView,
   SafeAreaView,
   TouchableOpacity,
+  Image,
 } from 'react-native'
 import { send, subscribe } from './chatServer'
 
 const NAME = 'Filsan'
 const CHANNEL = 'hackconf'
+const AVATAR =
+  'https://pbs.twimg.com/profile_images/1180146316267143173/-2ST_BYP_400x400.jpg'
 
 // item we render anf latlist takes in mesage as data
 const renderItem = ({ item }) => {
   return (
     <View style={styles.row}>
-      <Text style={styles.sender}>{item.sender}</Text>
-      <Text style={styles.message}>{item.message}</Text>
+      <Image style={styles.avatar} source={{ uri: item.avatar }} />
+      <View style={styles.rowText}>
+        <Text style={styles.sender}>{item.sender}</Text>
+        <Text style={styles.message}>{item.message}</Text>
+      </View>
     </View>
   )
 }
@@ -53,6 +59,7 @@ export default function App() {
       channel: CHANNEL,
       sender: NAME,
       message: text,
+      avatar: AVATAR,
     })
 
     // clear the input
@@ -92,6 +99,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
+    flexDirection: 'row',
   },
   message: {
     fontSize: 18,
@@ -117,5 +125,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     padding: 20,
     margin: 10,
+  },
+  avatar: {
+    borderRadius: 20,
+    width: 40,
+    height: 40,
+    marginRight: 10,
+  },
+  rowText: {
+    flex: 1,
   },
 })
