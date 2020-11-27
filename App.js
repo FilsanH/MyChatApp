@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
-import Header from './Header'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+const Stack = createStackNavigator()
+import Home from './screens/Home'
 import MessageList from './screens/MessageList'
+import Header from './screens/Header'
 import Composer from './screens/Composer'
-
-import Navigator from './routes/homeStack'
 
 import {
   StyleSheet,
@@ -28,7 +30,14 @@ const AVATAR =
 // item we render anf latlist takes in mesage as data
 
 export default function App() {
-  return <MessageList></MessageList>
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='MessageList' component={MessageList} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
 const styles = StyleSheet.create({

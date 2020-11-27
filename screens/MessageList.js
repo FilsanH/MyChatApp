@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
-import Header from '../Header'
+import Header from './Header'
 import { send, subscribe } from '../chatServer'
 import {
   StyleSheet,
@@ -32,7 +32,11 @@ const renderItem = ({ item }) => {
     </View>
   )
 }
-export default (props) => {
+const MessageList = ({
+  route: {
+    params: { Name}, //don't need anything at the moment
+  },
+}) => {
   // new lines below...
   const [messages, setMessages] = React.useState([]) //initial state is an empty array
   //setMessages is a functin that updated the message
@@ -68,7 +72,7 @@ export default (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={CHANNEL} />
+      <Header title={Name} />
       <FlatList data={messages} renderItem={renderItem} inverted />
       <StatusBar style='auto' />
       <KeyboardAvoidingView behavior='padding'>
@@ -136,3 +140,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 })
+
+export default MessageList

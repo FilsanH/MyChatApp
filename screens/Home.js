@@ -1,9 +1,18 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
-export default (props) => (
+export default ({ navigation }) => (
   <View style={styles.header}>
-    <Text style={styles.title}>#{props.title}</Text>
+    <Text style={styles.title}>Welcome to the App over !!! </Text>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('MessageList', {
+          Name: 'Set Name Here ',
+        })
+      }}
+    >
+      <Text>SOLARS </Text>
+    </TouchableOpacity>
   </View>
 )
 
