@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
 
 export default (props) => (
   <View style={styles.header}>
@@ -9,7 +9,6 @@ export default (props) => (
 
 const styles = StyleSheet.create({
   header: {
-    height: 80,
     backgroundColor: 'teal',
     alignItems: 'center',
     justifyContent: 'flex-end',

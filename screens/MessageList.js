@@ -34,7 +34,7 @@ const renderItem = ({ item }) => {
 }
 const MessageList = ({
   route: {
-    params: { Name}, //don't need anything at the moment
+    params: { Name, Avatar }, //don't need anything at the moment
   },
 }) => {
   // new lines below...
@@ -61,9 +61,9 @@ const MessageList = ({
     // waits until the message is sent
     await send({
       channel: CHANNEL,
-      sender: NAME,
+      sender: Name,
       message: text,
-      avatar: AVATAR,
+      avatar: Avatar,
     })
 
     // clear the input
@@ -72,7 +72,7 @@ const MessageList = ({
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={Name} />
+      <Header  title={Name} />
       <FlatList data={messages} renderItem={renderItem} inverted />
       <StatusBar style='auto' />
       <KeyboardAvoidingView behavior='padding'>
@@ -85,7 +85,7 @@ const MessageList = ({
             placeholder='Type something nice '
           />
           <TouchableOpacity onPress={sendMessage}>
-            <Text style={styles.send}>Sendd</Text>
+            <Text style={styles.send}>Send </Text>
           </TouchableOpacity>
         </View>
         {/* notice controlled input feedback  */}

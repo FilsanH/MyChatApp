@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 const Stack = createStackNavigator()
 import Home from './screens/Home'
 import MessageList from './screens/MessageList'
+import Images  from './screens/MessageList'
 import Header from './screens/Header'
 import Composer from './screens/Composer'
 
@@ -22,10 +23,9 @@ import {
 } from 'react-native'
 import { send, subscribe } from './chatServer'
 
-const NAME = 'Filsan'
+
 const CHANNEL = 'hackconf'
-const AVATAR =
-  'https://pbs.twimg.com/profile_images/1180146316267143173/-2ST_BYP_400x400.jpg'
+
 
 // item we render anf latlist takes in mesage as data
 
@@ -35,6 +35,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='MessageList' component={MessageList} />
+        <Stack.Screen name='Images' component={Images} />
       </Stack.Navigator>
     </NavigationContainer>
   )
