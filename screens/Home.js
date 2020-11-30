@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
+  Image,
 } from 'react-native'
 
 const users = [
@@ -15,18 +16,15 @@ const users = [
   },
   {
     name: 'Hassan',
-    avatar:
-      'https://images.pexels.com/photos/3885948/pexels-photo-3885948.jpeg?auto=compress&cs=tinysrgb&h=350',
+    avatar: 'https://www.photosforclass.com/download/px_2007',
   },
   {
     name: 'Mary',
-    avatar:
-      'https://images.pexels.com/photos/3885948/pexels-photo-3885948.jpeg?auto=compress&cs=tinysrgb&h=350',
+    avatar: 'https://www.photosforclass.com/download/px_933498',
   },
   {
     name: 'John',
-    avatar:
-      'https://images.pexels.com/photos/3885948/pexels-photo-3885948.jpeg?auto=compress&cs=tinysrgb&h=350',
+    avatar: 'https://www.photosforclass.com/download/px_4555468',
   },
 ]
 
@@ -41,6 +39,12 @@ const Home = ({ navigation }) => {
           })
         }}
       >
+        <Image
+          style={styles.logo}
+          source={{
+            uri: item.avatar,
+          }}
+        ></Image>
         <Text style={styles.title}>{item.name} Account </Text>
       </TouchableOpacity>
     )
@@ -69,6 +73,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 24,
+  },
+  logo: {
+    width: 200,
+    height: 150,
   },
 })
 

@@ -72,7 +72,7 @@ const MessageList = ({
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header  title={Name} />
+      <Header title={Name} />
       <FlatList data={messages} renderItem={renderItem} inverted />
       <StatusBar style='auto' />
       <KeyboardAvoidingView behavior='padding'>
